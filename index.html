@@ -1,251 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Discover FRØST Watches, premium Nordic-inspired timepieces crafted for style and durability." />
-    <meta name="keywords" content="FRØST Watches, Nordic watches, luxury timepieces, Viking-inspired watches" />
-    <title>FRØST Watches - Born in the North. Built for the Future.</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:ital,wght@1,400..900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
-    </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FRØST Watches</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:ital,wght@1,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
-    <a href="#collection" class="skip-link">Skip to main content</a>
+  <nav>
+    <a href="#about">About</a>
+    <div class="dropdown">
+      <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Collection</button>
+      <div class="dropdown-content">
+        <a href="#watch-skold">SKØLD</a>
+        <a href="#watch-skymmer">SKYMMER</a>
+        <a href="#watch-myrk">MYRK</a>
+        <a href="#watch-hrafn">HRAFN</a>
+        <a href="#watch-sno">SNØ</a>
+        <a href="#watch-lys">LYS</a>
+        <a href="#watch-mork">MØRK</a>
+        <a href="#watch-regn">REGN</a>
+        <a href="#watch-hav">HAV</a>
+        <a href="#watch-jokull">JØKULL</a>
+        <a href="#watch-fjord">FJØRD</a>
+        <a href="#watch-skog">SKØG</a>
+        <a href="#watch-nord">NORD</a>
+        <a href="#watch-glimt">GLIMT</a>
+        <a href="#watch-valhalla">VALHALLA</a>
+      </div>
+    </div>
+    <a href="#packaging">Packaging</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-    <nav>
-        <a href="#about">About</a>
-        <div class="dropdown">
-            <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Collection</button>
-            <div class="dropdown-content">
-                <a href="#watch-skold">SKØLD</a>
-                <a href="#watch-skymmer">SKYMMER</a>
-                <a href="#watch-sno">SNØ</a>
-                <a href="#watch-myrk">MYRK</a>
-                <a href="#watch-hrafn">HRAFN</a>
-                <a href="#watch-lys">LYS</a>
-                <a href="#watch-mork">MØRK</a>
-                <a href="#watch-regn">REGN</a>
-                <a href="#watch-hav">HAV</a>
-                <a href="#watch-nord">NORD</a>
-                <a href="#watch-glimt">GLIMT</a>
-                <a href="#watch-jokull">JØKULL</a>
+  <header role="banner">
+    <div class="aurora"></div>
+    <h1>FRØST Watches</h1>
+    <p>Born in the North. Built for the Future.</p>
+  </header>
+
+  <button class="music-toggle" id="musicToggle" onclick="toggleMusic()" aria-label="Toggle background music" aria-pressed="true">🔊</button>
+
+  <main>
+    <section class="section our-story" id="about">
+      <h2 id="about-heading" class="section-title">About</h2>
+      <p class="highlight-intro">FRØST crafts timepieces inspired by the raw beauty of Nordic lands — where ancient myths meet modern design.</p>
+      <p>Born from the stillness of Nordic forests and the power of Viking steel, we create watches where time is respected, and design is meaningful. We are a tribute to the North, guided by Scandinavian principles: clarity over clutter, function over fashion, authenticity over flash.</p>
+      <p>Inspired by frost-covered landscapes and ancient Norse craftsmanship, each piece captures nature’s soul and heritage’s strength — bold yet minimal, sustainable, and striking like runes on stone.</p>
+      <p class="closing emphasis">To wear FRØST is to carry the North on your wrist: elegance carved from ice, time told simply.</p>
+    </section>
+
+    <section class="section" id="collection" aria-labelledby="collection-heading">
+      <h2 id="collection-heading" class="section-title">Our Collection</h2>
+      <div class="watch-grid">
+        <article class="watch fade-in" id="watch-skold">
+          <figure>
+            <div class="watch-wrapper">
+              <img src="SKØLD.png" alt="FRØST SKØLD Watch - The Viking Icon" />
             </div>
-        </div>
-        <a href="#packaging">Packaging</a>
-        <a href="#contact">Contact</a>
-    </nav>
+            <div class="magnifier" aria-hidden="true"></div>
+          </figure>
+          <h3>FRØST SKØLD <span class="subtitle">The Viking Icon</span></h3>
+          <p class="specs">Shield-shaped back, sword indices, stainless steel, matte black dial with runes, textured leather strap, Swiss automatic, 10 ATM, circular date window at 6 o’clock.</p>
+          <p class="story">Forged from legend, SKØLD draws strength from Viking shields and battles long past. A tribute to the warriors of the North — courage, legacy, iron rhythm.</p>
+          <p class="price">€780</p>
+          <a href="#" class="shop-now">Buy Now</a>
+        </article>
 
-    <header role="banner">
-        <h1>FRØST Watches</h1>
-        <p>Born in the North. Built for the Future.</p>
-    </header>
-
-    <button class="music-toggle" id="musicToggle" onclick="toggleMusic()" aria-label="Toggle background music" aria-pressed="true">🔊</button>
-
-    <main>
-        <section class="section our-story" id="about" aria-labelledby="about-heading">
-            <h2 id="about-heading">About</h2>
-            <p><span class="intro">FRØST crafts timepieces inspired by the raw beauty of Nordic lands — where ancient myths meet modern design.</span></p>
-            <p>Born from the stillness of Nordic forests and the power of Viking steel, we create watches where time is respected, and design is meaningful. We are a tribute to the North, guided by Scandinavian principles: clarity over clutter, function over fashion, authenticity over flash.</p>
-            <p>Inspired by frost-covered landscapes and ancient Norse craftsmanship, each piece captures nature’s soul and heritage’s strength — bold yet minimal, sustainable, and striking like runes on stone.</p>
-            <p class="closing">To wear FRØST is to carry the North on your wrist: elegance carved from ice, time told simply.</p>
-        </section>
-
-        <hr class="knotwork-divider" aria-hidden="true" />
-
-        <section class="section" id="collection" aria-labelledby="collection-heading">
-            <h2 id="collection-heading" class="section-title">Our Collection</h2>
-            <div class="watch-grid">
-                <article class="watch" id="watch-skold" aria-labelledby="watch-skold-title">
-                    <figure>
-                       <img src="SKØLD.png" alt="FRØST SKØLD Watch - The Viking Icon" loading="lazy" />
-                       <div class="magnifier" aria-hidden="true"></div>
-                    </figure>
-                    <div class="watch-content">
-                        <h3 id="watch-skold-title"><span class="watch-name">FRØST SKØLD</span><span class="subtitle">The Viking Icon</span></h3>
-                        <p class="specs">Shield-shaped back, sword indices, stainless steel, matte black dial with runes, textured leather strap, Swiss automatic, 10 ATM, circular date window at 6 o’clock.</p>
-                        <p class="story">Forged from legend, SKØLD draws strength from Viking shields and battles long past. It’s a tribute to the warriors of the North — to courage, legacy, and the iron rhythm of heritage.</p>
-                        <p class="price">€780</p>
-                        <a href="https://www.frostwatches.com/skold" class="shop-now" target="_blank" rel="noopener noreferrer">Shop SKØLD</a>
-                    </div>
-                </article>
-                <article class="watch" id="watch-skymmer" aria-labelledby="watch-skymmer-title">
-                     <figure>
-                        <img src="SKYMMER.png" alt="FRØST SKYMMER Watch - The Hour of Dusk" loading="lazy" />
-                        <div class="magnifier" aria-hidden="true"></div>
-                    </figure>
-                    <div class="watch-content">
-                        <h3 id="watch-skymmer-title"><span class="watch-name">FRØST SKYMMER</span><span class="subtitle">The Hour of Dusk</span></h3>
-                        <p class="specs">Polished midnight blue dial, brushed steel case, minimal markers, dusk-toned gradient, sapphire crystal glass, automatic movement, date at 6 o’clock, calfskin strap, 5 ATM.</p>
-                        <p class="story">Between day and night, there’s SKYMMER — the pause before stars, the hush before dark. It speaks of introspection, transition, and the beauty of in-betweens.</p>
-                        <p class="price">€620</p>
-                        <a href="https://www.frostwatches.com/skymmer" class="shop-now" target="_blank" rel="noopener noreferrer">Shop SKYMMER</a>
-                    </div>
-                </article>
-                 <article class="watch" id="watch-sno" aria-labelledby="watch-sno-title">
-                     <figure>
-                        <img src="SNØ.png" alt="FRØST SNØ Watch - Arctic Explorer" loading="lazy" />
-                        <div class="magnifier" aria-hidden="true"></div>
-                     </figure>
-                    <div class="watch-content">
-                        <h3 id="watch-sno-title"><span class="watch-name">FRØST SNØ</span><span class="subtitle">Arctic Explorer</span></h3>
-                        <p class="specs">White ceramic case, glacier blue dial, rugged field look, camo nylon/rubber strap, Japanese quartz, 20 ATM, date at 4 o’clock.</p>
-                        <p class="story">Born of a white horizon and the hush of falling snow, SNØ captures the moment when all is still. It’s light on frostbitten stone. A companion for explorers of ice and inner peace.</p>
-                        <p class="price">€490</p>
-                        <a href="https://www.frostwatches.com/sno" class="shop-now" target="_blank" rel="noopener noreferrer">Shop SNØ</a>
-                    </div>
-                </article>
-                <article class="watch" id="watch-myrk" aria-labelledby="watch-myrk-title">
-                     <figure>
-                        <img src="MYRK.png" alt="FRØST MYRK Watch - Stealth Chronograph" loading="lazy" />
-                        <div class="magnifier" aria-hidden="true"></div>
-                    </figure>
-                    <div class="watch-content">
-                        <h3 id="watch-myrk-title"><span class="watch-name">FRØST MYRK</span><span class="subtitle">Stealth Chronograph</span></h3>
-                        <p class="specs">Black DLC steel, tactical chronograph, luminous grey details, black NATO/leather strap, date in subdial, 10 ATM.</p>
-                        <p class="story">In the depths of the Nordic forest, where night falls thick and still, MYRK is the quiet pulse of presence. It honors the darkness — not as absence, but as clarity. A timekeeper for those who walk unseen and listen deeply.</p>
-                        <p class="price">€660</p>
-                        <a href="https://www.frostwatches.com/myrk" class="shop-now" target="_blank" rel="noopener noreferrer">Shop MYRK</a>
-                    </div>
-                </article>
-                 <article class="watch" id="watch-hrafn" aria-labelledby="watch-hrafn-title">
-                    <figure>
-                        <img src="HRAFN.png" alt="FRØST HRAFN Watch - Nordic Signature" loading="lazy" />
-                        <div class="magnifier" aria-hidden="true"></div>
-                     </figure>
-                    <div class="watch-content">
-                        <h3 id="watch-hrafn-title"><span class="watch-name">FRØST HRAFN</span><span class="subtitle">Nordic Signature</span></h3>
-                        <p class="specs">Brushed stainless steel case, deep matte black dial with feather-texture pattern, raised silver indices and hands, minimalist FRØST logo and HRAFN text, silver raven at 6 o’clock, date window at 3 o’clock, Swiss quartz movement, black leather strap, water resistant 5 ATM.</p>
-                        <p class="story">HRAFN is inspired by Huginn and Muninn, Odin’s trusted watchers. It speaks of thought and music, of stories carried on the wind. With every tick, it reminds you to observe — and to remember.</p>
-                        <p class="price">€640</p>
-                        <a href="https://www.frostwatches.com/hrafn" class="shop-now" target="_blank" rel="noopener noreferrer">Shop HRAFN</a>
-                    </div>
-                </article>
-                <article class="watch" id="watch-lys" aria-labelledby="watch-lys-title">
-                    <figure>
-                        <img src="LYS.png" alt="FRØST LYS Watch - Pure Light" loading="lazy" />
-                        <div class="magnifier" aria-hidden="true"></div>
-                     </figure>
-                    <div class="watch-content">
-                        <h3 id="watch-lys-title"><span class="watch-name">FRØST LYS</span><span class="subtitle">Pure Light</span></h3>
-                        <p class="specs">Ultra-clean frosted silver dial, titanium case, solar quartz, mesh/silicone strap, 5 ATM, date aperture at 3 o’clock.</p>
-                        <p class="story">Lys means light — and this watch channels it fully. Clean, solar, modern: a symbol of clarity and sustainability. It reminds us to seek brightness, inside and out.</p>
-                        <p class="price">€430</p>
-                        <a href="https://www.frostwatches.com/lys" class="shop-now" target="_blank" rel="noopener noreferrer">Shop LYS</a>
-                    </div>
-                </article>
-                 <article class="watch" id="watch-mork" aria-labelledby="watch-mork-title">
-                     <figure>
-                        <img src="MØRK.png" alt="FRØST MØRK Watch - Urban Dusk" loading="lazy" />
-                        <div class="magnifier" aria-hidden="true"></div>
-                     </figure>
-                    <div class="watch-content">
-                        <h3 id="watch-mork-title"><span class="watch-name">FRØST MØRK</span><span class="subtitle">Urban Dusk</span></h3>
-                        <p class="specs">Gunmetal case, blue gradient dial, dark brown leather/rubber strap, auto movement, 5 ATM, horizontal date at 6 o’clock.</p>
-                        <p class="story">MØRK captures the fleeting dusk of Nordic cities, where shadows blend with fading light. It’s a guide for those who thrive in the urban twilight.</p>
-                        <p class="price">€580</p>
-                        <a href="https://www.frostwatches.com/mork" class="shop-now" target="_blank" rel="noopener noreferrer">Shop MØRK</a>
-                    </div>
-                </article>
-                 <article class="watch" id="watch-regn" aria-labelledby="watch-regn-title">
-                     <figure>
-                        <img src="REGN.png" alt="FRØST REGN Watch - Storm Companion" loading="lazy" />
-                        <div class="magnifier" aria-hidden="true"></div>
-                    </figure>
-                    <div class="watch-content">
-                        <h3 id="watch-regn-title"><span class="watch-name">FRØST REGN</span><span class="subtitle">Storm Companion</span></h3>
-                        <p class="specs">Matte deep black dial with luminous numerals, brushed stainless steel case, chronograph quartz movement, anti-reflective sapphire, rainproof rubber strap, 20 ATM.</p>
-                        <p class="story">In the grey wash of storm and rain, REGN stands clear. Its bold lume and solid presence cut through chaos. It is not afraid of getting wet. It was made for it.</p>
-                        <p class="price">€690</p>
-                        <a href="https://www.frostwatches.com/regn" class="shop-now" target="_blank" rel="noopener noreferrer">Shop REGN</a>
-                    </div>
-                </article>
-                 <article class="watch" id="watch-hav" aria-labelledby="watch-hav-title">
-                     <figure>
-                        <img src="HAV.png" alt="FRØST HAV Watch - Nordic Diver" loading="lazy" />
-                        <div class="magnifier" aria-hidden="true"></div>
-                    </figure>
-                    <div class="watch-content">
-                        <h3 id="watch-hav-title"><span class="watch-name">FRØST HAV</span><span class="subtitle">Nordic Diver</span></h3>
-                        <p class="specs">Marine-grade steel, deep blue dial, dive rubber/bracelet strap, auto, magnified date at 3 o’clock, 30 ATM.</p>
-                        <p class="story">HAV sinks into the mystery of the deep sea — a place both silent and roaring, calm and violent. Built to endure pressure, it invites you to face what lies beneath.</p>
-                        <p class="price">€720</p>
-                        <a href="https://www.frostwatches.com/hav" class="shop-now" target="_blank" rel="noopener noreferrer">Shop HAV</a>
-                    </div>
-                </article>
-                 <article class="watch" id="watch-nord" aria-labelledby="watch-nord-title">
-                     <figure>
-                        <img src="NORD.png" alt="FRØST NORD Watch - Aurora Field Watch" loading="lazy" />
-                        <div class="magnifier" aria-hidden="true"></div>
-                     </figure>
-                    <div class="watch-content">
-                        <h3 id="watch-nord-title"><span class="watch-name">FRØST NORD</span><span class="subtitle">Aurora Field Watch</span></h3>
-                        <p class="specs">Bead-blasted titanium, aurora-inspired dial, eco-strap, solar/eco quartz, hidden date disc, 10 ATM.</p>
-                        <p class="story">Far beyond the last road, under dancing skies, NORD glows with the light of the aurora. It’s a compass for dreamers and wanderers, a call to follow wonder northward.</p>
-                        <p class="price">€520</p>
-                        <a href="https://www.frostwatches.com/nord" class="shop-now" target="_blank" rel="noopener noreferrer">Shop NORD</a>
-                    </div>
-                </article>
-                <article class="watch" id="watch-glimt" aria-labelledby="watch-glimt-title">
-                    <figure>
-                        <img src="GLIMT.png" alt="FRØST GLIMT Watch - A Glimpse of Magic" loading="lazy" />
-                        <div class="magnifier" aria-hidden="true"></div>
-                     </figure>
-                    <div class="watch-content">
-                        <h3 id="watch-glimt-title"><span class="watch-name">FRØST GLIMT</span><span class="subtitle">A Glimpse of Magic</span></h3>
-                        <p class="specs">Glacier sparkle dial, crystal-clear sapphire glass, stainless case, shimmer effect, luxury mesh strap, date at 3 o’clock.</p>
-                        <p class="story">GLIMT is a glimmer of starlight on the wrist — a fleeting moment of cosmic beauty. It reflects the heavens, capturing infinity in the sparkle of its dial.</p>
-                        <p class="price">€640</p>
-                        <a href="https://www.frostwatches.com/glimt" class="shop-now" target="_blank" rel="noopener noreferrer">Shop GLIMT</a>
-                    </div>
-                </article>
-                <article class="watch" id="watch-jokull" aria-labelledby="watch-jokull-title">
-                     <figure>
-                        <img src="JØKULL.png" alt="FRØST JØKULL Watch - Glacier Guardian" loading="lazy" />
-                        <div class="magnifier" aria-hidden="true"></div>
-                     </figure>
-                    <div class="watch-content">
-                        <h3 id="watch-jokull-title"><span class="watch-name">FRØST JØKULL</span><span class="subtitle">Glacier Guardian</span></h3>
-                        <p class="specs">Polished stainless steel with glacier-textured bezel, frosted glacier blue dial, silver hour markers, luminous hands, snowflake emblem, anti-reflective sapphire crystal, Swiss quartz, grey rubber strap with snowflake pattern, 20 ATM, magnified date at 3 o’clock.</p>
-                        <p class="story">JØKULL is a tribute to the ancient glaciers that carved the Nordic world — silent giants of ice that hold the memory of millennia. Its frosted blue dial mirrors the endless expanse of a frozen horizon, while the snowflake at its heart whispers of winter’s quiet magic. Built to withstand the harshest elements, JØKULL is for those who seek the stillness of the ice, the thrill of the unknown, and the strength to endure. It’s a timekeeper for explorers who hear the call of the frozen North.</p>
-                        <p class="price">€670</p>
-                        <a href="https://www.frostwatches.com/jokull" class="shop-now" target="_blank" rel="noopener noreferrer">Shop JØKULL</a>
-                    </div>
-                </article>
+        <article class="watch fade-in" id="watch-skymmer">
+          <figure>
+            <div class="watch-wrapper">
+              <img src="SKYMMER.png" alt="FRØST SKYMMER Watch - The Hour of Dusk" />
             </div>
-        </section>
+            <div class="magnifier" aria-hidden="true"></div>
+          </figure>
+          <h3>FRØST SKYMMER <span class="subtitle">The Hour of Dusk</span></h3>
+          <p class="specs">Polished midnight blue dial, brushed steel case, minimal markers, dusk-toned gradient, sapphire crystal, automatic movement, date at 6 o’clock, calfskin strap, 5 ATM.</p>
+          <p class="story">Between day and night, SKYMMER speaks of introspection, transition, and the beauty of in-betweens — the soft twilight of the soul.</p>
+          <p class="price">€620</p>
+          <a href="#" class="shop-now">Buy Now</a>
+        </article>
 
-        <hr class="knotwork-divider" aria-hidden="true" />
+        <article class="watch fade-in" id="watch-myrk">
+          <figure>
+            <div class="watch-wrapper">
+              <img src="MYRK.png" alt="FRØST MYRK Watch - Stealth Chronograph" />
+            </div>
+            <div class="magnifier" aria-hidden="true"></div>
+          </figure>
+          <h3>FRØST MYRK <span class="subtitle">Stealth Chronograph</span></h3>
+          <p class="specs">Black DLC steel, tactical chronograph, luminous grey details, black NATO/leather strap, date in subdial, 10 ATM.</p>
+          <p class="story">In the silent depth of Nordic forests, MYRK honors the clarity of darkness and the quiet power of those who walk unseen.</p>
+          <p class="price">€660</p>
+          <a href="#" class="shop-now">Buy Now</a>
+        </article>
 
-        <section class="section packaging" id="packaging" aria-labelledby="packaging-heading">
-            <h2 id="packaging-heading" class="section-title">Packaging</h2>
-            <p>Minimalist drawer box, frosted sleeve, soft-touch interior. Includes authenticity card & microfiber cloth.</p>
-        </section>
+        <article class="watch fade-in" id="watch-hrafn">
+          <figure>
+            <div class="watch-wrapper">
+              <img src="HRAFN.png" alt="FRØST HRAFN Watch - Nordic Signature" />
+            </div>
+            <div class="magnifier" aria-hidden="true"></div>
+          </figure>
+          <h3>FRØST HRAFN <span class="subtitle">Nordic Signature</span></h3>
+          <p class="specs">Brushed stainless steel case, deep matte black dial with feather texture, silver indices, Swiss quartz, date at 3 o’clock, black leather strap, 5 ATM.</p>
+          <p class="story">Inspired by Huginn and Muninn, Odin’s ravens — watchers of memory and thought. HRAFN reminds you to observe and remember.</p>
+          <p class="price">€640</p>
+          <a href="#" class="shop-now">Buy Now</a>
+        </article>
 
-         <hr class="knotwork-divider" aria-hidden="true" />
+        <article class="watch fade-in" id="watch-sno">
+          <figure>
+            <div class="watch-wrapper">
+              <img src="SNØ.png" alt="FRØST SNØ Watch - Arctic Explorer" />
+            </div>
+            <div class="magnifier" aria-hidden="true"></div>
+          </figure>
+          <h3>FRØST SNØ <span class="subtitle">Arctic Explorer</span></h3>
+          <p class="specs">White ceramic case, snow white textured dial, rugged field look, white rubber strap, Japanese quartz, 20 ATM.</p>
+          <p class="story">Born of white horizons and falling snow, SNØ captures the hush of endless winter. Explorer of ice and inner peace.</p>
+          <p class="price">€490</p>
+          <a href="#" class="shop-now">Buy Now</a>
+        </article>
 
-        <section class="section contact" id="contact" aria-labelledby="contact-heading">
-            <h2 id="contact-heading" class="section-title">Contact & Info</h2>
-             <address> <strong>FRØST Watches</strong><br>
-                My<br> Address, France<br>
-                📧 <a href="mailto:info@frostwatches.com">info@frostwatches.com</a><br>
-                📞 <a href="tel:+33633xxxxxx">+33 (0)633 xxxxxx</a><br> 🌐 <a href="https://www.frostwatches.com" target="_blank" rel="noopener noreferrer">www.frostwatches.com</a> </address>
-        </section>
-    </main>
+        <article class="watch fade-in" id="watch-lys">
+          <figure>
+            <div class="watch-wrapper">
+              <img src="LYS.png" alt="FRØST LYS Watch - Pure Light" />
+            </div>
+            <div class="magnifier" aria-hidden="true"></div>
+          </figure>
+          <h3>FRØST LYS <span class="subtitle">Pure Light</span></h3>
+          <p class="specs">Frosted silver dial, titanium case, solar quartz movement, mesh/silicone strap, date at 3 o’clock, 5 ATM.</p>
+          <p class="story">Lys means light — and this timepiece is a symbol of clarity, hope, and sustainable energy, inside and out.</p>
+          <p class="price">€430</p>
+          <a href="#" class="shop-now">Buy Now</a>
+        </article>
 
-    <footer>
-        <p>© <span id="current-year"></span> FRØST Watches. All rights reserved. | Born in the North. Built for the Future.</p>
-    </footer>
+        <article class="watch fade-in" id="watch-mork">
+          <figure>
+            <div class="watch-wrapper">
+              <img src="MØRK.png" alt="FRØST MØRK Watch - Urban Dusk" />
+            </div>
+            <div class="magnifier" aria-hidden="true"></div>
+          </figure>
+          <h3>FRØST MØRK <span class="subtitle">Urban Dusk</span></h3>
+          <p class="specs">Gunmetal case, blue gradient dial, dark brown leather/rubber strap, automatic movement, 5 ATM, date at 6 o’clock.</p>
+          <p class="story">Capturing the fleeting dusk of Nordic cities, MØRK thrives in the urban twilight where shadows meet light.</p>
+          <p class="price">€580</p>
+          <a href="#" class="shop-now">Buy Now</a>
+        </article>
 
-    <button class="scroll-to-top" onclick="scrollToTop()" aria-label="Scroll to top">↑</button>
-    <button class="scroll-to-bottom" onclick="scrollToBottom()" aria-label="Scroll to bottom">↓</button>
+        <article class="watch fade-in" id="watch-regn">
+          <figure>
+            <div class="watch-wrapper">
+              <img src="REGN.png" alt="FRØST REGN Watch - Storm Companion" />
+            </div>
+            <div class="magnifier" aria-hidden="true"></div>
+          </figure>
+          <h3>FRØST REGN <span class="subtitle">Storm Companion</span></h3>
+          <p class="specs">Matte black dial with luminous numerals, brushed steel case, chronograph quartz, anti-reflective sapphire, rainproof rubber strap, 20 ATM.</p>
+          <p class="story">In the grey wash of storm and rain, REGN stands clear — fearless of chaos, built to thrive in nature’s wildness.</p>
+          <p class="price">€690</p>
+          <a href="#" class="shop-now">Buy Now</a>
+        </article>
 
-    <audio id="backgroundMusic" loop preload="metadata"> <source src="ambient.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+        <article class="watch fade-in" id="watch-hav">
+          <figure>
+            <div class="watch-wrapper">
+              <img src="HAV.png" alt="FRØST HAV Watch - Nordic Diver" />
+            </div>
+            <div class="magnifier" aria-hidden="true"></div>
+          </figure>
+          <h3>FRØST HAV <span class="subtitle">Nordic Diver</span></h3>
+          <p class="specs">Marine-grade steel, deep blue dial, dive rubber/bracelet, automatic movement, magnified date at 3 o’clock, 30 ATM.</p>
+          <p class="story">HAV sinks into the mystery of the deep sea — calm and roaring, a powerful call to face the unknown beneath.</p>
+          <p class="price">€720</p>
+          <a href="#" class="shop-now">Buy Now</a>
+        </article>
 
-    <script src="script.js" defer></script>
+        <article class="watch fade-in" id="watch-jokull">
+          <figure>
+            <div class="watch-wrapper">
+              <img src="JØKULL.png" alt="FRØST JØKULL Watch - Glacier Guardian" />
+            </div>
+            <div class="magnifier" aria-hidden="true"></div>
+          </figure>
+          <h3>FRØST JØKULL <span class="subtitle">Glacier Guardian</span></h3>
+          <p class="specs">Polished stainless case, glacier blue dial, luminous snowflake accents, Swiss quartz, grey rubber strap, 20 ATM.</p>
+          <p class="story">JØKULL is a tribute to the ancient glaciers — silent giants that shaped the Nordic soul in endless frozen beauty.</p>
+          <p class="price">€670</p>
+          <a href="#" class="shop-now">Buy Now</a>
+        </article>
+
+        <article class="watch fade-in" id="watch-fjord">
+          <figure>
+            <div class="watch-wrapper">
+              <img src="FJØRD.png" alt="FRØST FJØRD Watch - Silent Strength" />
+            </div>
+            <div class="magnifier" aria-hidden="true"></div>
+          </figure>
+          <h3>FRØST FJØRD <span class="subtitle">Silent Strength</span></h3>
+          <p class="specs">Brushed stainless case, fjord blue gradient dial, cliff engraving bezel, Swiss automatic, leather strap, date magnifier, 10 ATM.</p>
+          <p class="story">FJØRD captures the stillness and power of Nordic waters — where ancient cliffs meet silent depths and the spirit is unbroken.</p>
+          <p class="price">€710</p>
+          <a href="#" class="shop-now">Buy Now</a>
+        </article>
+
+        <article class="watch fade-in" id="watch-skog">
+          <figure>
+            <div class="watch-wrapper">
+              <img src="SKØG.png" alt="FRØST SKØG Watch - Whisper of the Forest" />
+            </div>
+            <div class="magnifier" aria-hidden="true"></div>
+          </figure>
+          <h3>FRØST SKØG <span class="subtitle">Whisper of the Forest</span></h3>
+          <p class="specs">Brushed gunmetal case, moss-textured green dial, luminous hour markers, sapphire crystal, Japanese solar quartz, brown eco-leather strap, date at 4 o’clock, 10 ATM.</p>
+          <p class="story">In the hush of the forest, where the air is thick with moss and myth, SKØG was born...</p>
+          <p class="price">€610</p>
+          <a href="#" class="shop-now">Buy Now</a>
+        </article>
+
+        <article class="watch fade-in" id="watch-nord">
+          <figure>
+            <div class="watch-wrapper">
+              <img src="NORD.png" alt="FRØST NORD Watch - Aurora Field Watch" />
+            </div>
+            <div class="magnifier" aria-hidden="true"></div>
+          </figure>
+          <h3>FRØST NORD <span class="subtitle">Aurora Field Watch</span></h3>
+          <p class="specs">Bead-blasted titanium, aurora-inspired dial, eco strap, solar/eco quartz, hidden date disc, 10 ATM.</p>
+          <p class="story">NORD glows under dancing skies — a call to dreamers and wanderers to follow wonder northward, into the unknown.</p>
+          <p class="price">€520</p>
+          <a href="#" class="shop-now">Buy Now</a>
+        </article>
+
+        <article class="watch fade-in" id="watch-glimt">
+          <figure>
+            <div class="watch-wrapper">
+              <img src="GLIMT.png" alt="FRØST GLIMT Watch - A Glimpse of Magic" />
+            </div>
+            <div class="magnifier" aria-hidden="true"></div>
+          </figure>
+          <h3>FRØST GLIMT <span class="subtitle">A Glimpse of Magic</span></h3>
+          <p class="specs">Glacier sparkle dial, crystal-clear sapphire, stainless case, shimmer effect, luxury blue leather strap, date at 3 o’clock.</p>
+          <p class="story">GLIMT is a glimmer of starlight on the wrist — capturing infinity in a fleeting trace of cosmic beauty.</p>
+          <p class="price">€640</p>
+          <a href="#" class="shop-now">Buy Now</a>
+        </article>
+
+<article class="watch fade-in" id="watch-valhalla">
+  <figure>
+    <div class="watch-wrapper">
+      <img src="VALHALLA.png" alt="FRØST VALHALLA Watch – Hall of the Chosen" />
+    </div>
+    <div class="magnifier" aria-hidden="true"></div>
+  </figure>
+  <h3>FRØST VALHALLA <span class="subtitle">Hall of the Chosen</span></h3>
+  <p class="specs">
+    Stainless steel with dark gunmetal finish, 44mm case, 11mm thick, charcoal runestone-etched dial with Valhalla roof engraving, gold-inlaid rune numerals (12, 3, 6, 9), sapphire crystal with cyclops date lens at 3 o’clock, Swiss automatic movement with engraved case back, sword-shaped hands (raven on hour hand), luminous gold markers, Viking knot leather strap, 10 ATM.
+  </p>
+  <p class="story">
+    VALHALLA is more than a timepiece — it's a shrine to legacy. Forged in honor of the mythical great hall, where warriors feast beyond life, its dial is etched like ancient stone. The raven guides you, the runes whisper the hour, and the gold glow speaks of glory. When you wear VALHALLA, you carry the myth and might of the North — not to tell time, but to honor it.
+  </p>
+  <p class="price">€750</p>
+  <a href="#" class="shop-now">Buy Now</a>
+</article>
+
+      </div>
+    </section>
+
+    <section class="section packaging" id="packaging">
+      <h2 class="section-title">Packaging</h2>
+<div class="watch-wrapper">
+ <img src="Packaging_Skymmer.png" alt="Packaging Skymmer" />
+</div>
+      <p>Minimalist drawer box, frosted sleeve, soft-touch interior. Includes authenticity card & microfiber cloth.</p>
+    </section>
+
+    <section class="section contact" id="contact">
+      <h2 class="section-title">Contact & Info</h2>
+      <address>
+        <strong>FRØST Watches</strong><br>
+        [Address to be added]<br>
+        📧 <a href="/cdn-cgi/l/email-protection#173e393138173125382423203623343f32247934383a"><span class="__cf_email__" data-cfemail="436a6d656c4365716c7077746277606b66702d606c6e">[email&#160;protected]</span></a><br>
+        📞 [Phone to be added]<br>
+        🌐 <a href="https://www.frostwatches.com" target="_blank" rel="noopener noreferrer">www.frostwatches.com</a>
+      </address>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="current-year"></span> FRØST Watches. All rights reserved. | Born in the North. Built for the Future.</p>
+  </footer>
+
+  <button class="scroll-to-top" onclick="scrollToTop()" aria-label="Scroll to top">↑</button>
+  <button class="scroll-to-bottom" onclick="scrollToBottom()" aria-label="Scroll to bottom">↓</button>
+
+  <audio id="backgroundMusic" loop preload="metadata">
+    <source src="ambient.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="script.js" defer></script>
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9386d16ebb7cb039',t:'MTc0NjAxMzc5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>

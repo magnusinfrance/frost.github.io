@@ -1,173 +1,218 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const music = document.getElementById('backgroundMusic');
-    const musicToggle = document.getElementById('musicToggle');
-    let isPlaying = false; // Start paused, attempt autoplay later
+// script.js — Interactivity for FRØST Watches
 
-    // Function to toggle music playback state and icon
-    function toggleMusic() {
-        if (isPlaying) {
-            music.pause();
-            musicToggle.innerHTML = '🔇';
-            musicToggle.setAttribute('aria-pressed', 'false');
-            musicToggle.setAttribute('aria-label', 'Play background music');
-        } else {
-            // Attempt to play, might fail due to browser policy
-            music.play().then(() => {
-                musicToggle.innerHTML = '🔊';
-                musicToggle.setAttribute('aria-pressed', 'true');
-                musicToggle.setAttribute('aria-label', 'Pause background music');
-                isPlaying = true; // Update state only if play succeeds
-            }).catch((error) => {
-                console.warn('Background music playback failed:', error);
-                // Optionally inform the user music couldn't start
-                alert('Could not play background music. You may need to interact with the page first.');
-            });
-        }
-        // Important: Toggle the state variable *outside* the promise for immediate UI feedback
-        isPlaying = !isPlaying;
-    }
-
-    // Attach toggle function to the button click
-    if (musicToggle) {
-        musicToggle.addEventListener('click', toggleMusic);
-    }
-
-    // Attempt autoplay on load (often blocked by browsers until user interaction)
-    if (music) {
-        music.play().then(() => {
-            isPlaying = true;
-            if (musicToggle) {
-                 musicToggle.innerHTML = '🔊';
-                 musicToggle.setAttribute('aria-pressed', 'true');
-                 musicToggle.setAttribute('aria-label', 'Pause background music');
-            }
-        }).catch((error) => {
-            console.log('Autoplay prevented:', error);
-            // Ensure UI reflects the paused state if autoplay fails
-            isPlaying = false;
-             if (musicToggle) {
-                musicToggle.innerHTML = '🔇';
-                musicToggle.setAttribute('aria-pressed', 'false');
-                musicToggle.setAttribute('aria-label', 'Play background music');
-             }
-        });
-    }
-
-    // --- Magnifier Logic ---
-    document.querySelectorAll('.watch').forEach(watch => {
-        const img = watch.querySelector('img');
-        const magnifier = watch.querySelector('.magnifier');
-
-        if (!img || !magnifier) return; // Skip if elements are missing
-
-        function updateMagnifier(clientX, clientY) {
-            const rect = img.getBoundingClientRect();
-            // Calculate position relative to the image
-            const x = clientX - rect.left;
-            const y = clientY - rect.top;
-
-            // Check if cursor is over the image
-            if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
-                magnifier.style.display = 'block';
-                // Center magnifier over cursor (adjust offsets)
-                const magnifierSize = magnifier.offsetWidth;
-                const offsetX = magnifierSize / 2;
-                const offsetY = magnifierSize / 2;
-                magnifier.style.left = `${x - offsetX}px`;
-                magnifier.style.top = `${y - offsetY}px`;
-
-                // Calculate background position (adjust zoom factor)
-                const zoomFactor = 2.5;
-                const bgX = -(x * zoomFactor - offsetX);
-                const bgY = -(y * zoomFactor - offsetY);
-                magnifier.style.backgroundImage = `url(${img.src})`;
-                magnifier.style.backgroundSize = `${rect.width * zoomFactor}px ${rect.height * zoomFactor}px`;
-                magnifier.style.backgroundPosition = `${bgX}px ${bgY}px`;
-            } else {
-                magnifier.style.display = 'none';
-            }
-        }
-
-        // Use 'pointermove' for unified mouse/touch handling
-        watch.addEventListener('pointermove', (e) => {
-            // Prevent default touch behavior like scrolling when magnifying
-            if (e.pointerType === 'touch') {
-               e.preventDefault();
-            }
-            updateMagnifier(e.clientX, e.clientY);
-        });
-
-        watch.addEventListener('pointerleave', () => {
-            magnifier.style.display = 'none';
-        });
-    });
-
-    // --- Scroll Button Logic ---
-    const scrollToTopButton = document.querySelector('.scroll-to-top');
-    const scrollToBottomButton = document.querySelector('.scroll-to-bottom');
-
-    function checkScrollPosition() {
-        if (!scrollToTopButton || !scrollToBottomButton) return;
-
-        const scrollPosition = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight; // Use documentElement for better accuracy
-
-        // Show/hide scroll-to-top button
-        if (scrollPosition > 300) {
-            scrollToTopButton.classList.add('visible');
-        } else {
-            scrollToTopButton.classList.remove('visible');
-        }
-
-        // Show/hide scroll-to-bottom button
-        // Hide when very close to the bottom
-        if (scrollPosition + windowHeight >= documentHeight - 100) {
-            scrollToBottomButton.classList.add('hidden');
-        } else {
-            scrollToBottomButton.classList.remove('hidden');
-        }
-    }
-
-    window.addEventListener('scroll', checkScrollPosition, { passive: true }); // Use passive listener for performance
-    // Initial check in case the page loads scrolled down
-    checkScrollPosition();
-
-
-    // --- Dynamic Copyright Year ---
-    const yearSpan = document.getElementById('current-year');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
-
-     // --- Dropdown Accessibility ---
-     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-     dropdownToggles.forEach(toggle => {
-         const dropdownContent = toggle.nextElementSibling;
-         if (dropdownContent) {
-             // Close dropdown when focus moves out
-             dropdownContent.addEventListener('focusout', (e) => {
-                 // Check if the new focused element is still within the dropdown
-                 if (!dropdownContent.contains(e.relatedTarget) && e.relatedTarget !== toggle) {
-                     toggle.setAttribute('aria-expanded', 'false');
-                 }
-             });
-
-             // Toggle aria-expanded on click
-             toggle.addEventListener('click', () => {
-                  const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-                  toggle.setAttribute('aria-expanded', !isExpanded);
-             });
-         }
-     });
-
-}); // End DOMContentLoaded
-
-// Global scroll functions (can be called directly from HTML onclick)
 function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function scrollToBottom() {
-    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
+
+const music = document.getElementById('backgroundMusic');
+const musicToggle = document.getElementById('musicToggle');
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Create random starfield
+  const header = document.querySelector('header');
+  const starCount = 35;
+  
+  // Remove any existing stars
+  const existingStars = document.querySelectorAll('.star');
+  existingStars.forEach(star => star.remove());
+  
+  // Create new stars
+  for (let i = 0; i < starCount; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    
+    // Random properties
+    const size = Math.random() * 2 + 0.5; // 0.5px to 2.5px
+    const x = Math.random() * 100; // 0% to 100%
+    const y = Math.random() * 100; // 0% to 100%
+    const duration = Math.random() * 5 + 10; // 3s to 15s
+    const delay = Math.random() * 5; // 0s to 5s
+    const opacity = Math.random() * 0.7 + 0.3; // 0.3 to 1.0
+    
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    star.style.left = `${x}%`;
+    star.style.top = `${y}%`;
+    star.style.setProperty('--duration', `${duration}s`);
+    star.style.setProperty('--max-opacity', opacity);
+    star.style.animationDelay = `${delay}s`;
+    
+    // Occasionally make some stars brighter
+    if (Math.random() > 0.8) {
+      star.style.boxShadow = `0 0 ${size * 2}px white`;
+    }
+    
+    header.appendChild(star);
+  }
+  music.volume = 0.2;
+  const playPromise = music.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(() => {
+      console.log('Autoplay blocked until user interaction.');
+    });
+  }
+
+// Add this to your existing DOMContentLoaded event listener
+document.addEventListener('DOMContentLoaded', () => {
+  createStarfield();
+  // ... rest of your existing code
+});
+
+
+  const fadeElements = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  fadeElements.forEach(el => observer.observe(el));
+});
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play();
+    musicToggle.textContent = '🔊';
+    musicToggle.setAttribute('aria-pressed', 'true');
+  } else {
+    music.pause();
+    musicToggle.textContent = '🔇';
+    musicToggle.setAttribute('aria-pressed', 'false');
+  }
+}
+
+// Create Stars effect
+function createStarfield() {
+  const header = document.querySelector('header');
+  const starCount = 35;
+
+// Remove any existing star container
+  const existingStarfield = document.querySelector('.starfield');
+  if (existingStarfield) {
+    existingStarfield.remove();
+  }
+  
+  // Create star container
+  const starfield = document.createElement('div');
+  starfield.className = 'starfield';
+  starfield.style.position = 'absolute';
+  starfield.style.top = '0';
+  starfield.style.left = '0';
+  starfield.style.width = '100%';
+  starfield.style.height = '100%';
+  starfield.style.zIndex = '1'; // Above background but below text
+  starfield.style.pointerEvents = 'none';
+  header.appendChild(starfield);
+  
+  // Create stars
+  for (let i = 0; i < starCount; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    
+    // Random properties
+    const size = Math.random() * 1 + 0.5; // 0.5px to 1.5px
+    const x = Math.random() * 100;
+    const y = Math.random() * 100;
+    const opacity = Math.random() * 0.7 + 0.3; // 0.3 to 1.0
+    const duration = Math.random() * 4 + 2; // 2s to 6s
+    const delay = Math.random() * 10; // 0s to 10s
+    
+    star.style.position = 'absolute';
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    star.style.left = `${x}%`;
+    star.style.top = `${y}%`;
+    star.style.backgroundColor = 'white';
+    star.style.borderRadius = '50%';
+    star.style.opacity = opacity;
+    star.style.animation = `twinkle ${duration}s ease-in-out ${delay}s infinite alternate`;
+    star.style.animation += `, drift ${Math.random()*20+10}s linear ${Math.random()*5}s infinite alternate`;
+
+    starfield.appendChild(star);
+  }
+}
+
+
+// Create northern lights effect
+const auroraContainer = document.querySelector('.aurora');
+const lightColors = [
+  'rgba(50, 255, 180, 0.5)',  // Teal green
+  'rgba(180, 100, 255, 0.1)', // Soft violet
+    'rgba(100, 255, 200, 0.4)', // Bright green
+  'rgba(80, 200, 255, 0.2)',  // Blue
+  'rgba(150, 255, 220, 0.3)'  // Light green
+];
+
+for (let i = 0; i < 5; i++) {
+  const light = document.createElement('div');
+  light.classList.add('light-band');
+  
+  // Random properties
+  const y = Math.random() * 70 + 15;
+  const speed = Math.random() * 100 + 60 + 's';
+  const danceSpeed = Math.random() * 20 + 15 + 's';
+  const fadeSpeed = Math.random() * 15 + 10 + 's';
+  const width = Math.random() * 100 + 150 + '%';
+  const color = lightColors[Math.floor(Math.random() * lightColors.length)];
+  const height = Math.random() * 80 + 60 + 'px';
+  
+  light.style.top = `${y}%`;
+  light.style.setProperty('--drift-speed', speed);
+  light.style.setProperty('--dance-speed', danceSpeed);
+  light.style.setProperty('--fade-speed', fadeSpeed);
+  light.style.width = width;
+  light.style.height = height;
+  light.style.backgroundColor = color;
+  light.style.animationDelay = Math.random() * 20 + 's';
+  light.style.filter = 'blur(40px)';
+  
+  auroraContainer.appendChild(light);
+}
+
+const yearSpan = document.getElementById('current-year');
+if (yearSpan) {
+  yearSpan.textContent = new Date().getFullYear();
+}
+
+const dropdownToggle = document.querySelector('.dropdown-toggle');
+const dropdownContent = document.querySelector('.dropdown-content');
+
+if (dropdownToggle && dropdownContent) {
+  dropdownToggle.addEventListener('click', () => {
+    const expanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
+    dropdownToggle.setAttribute('aria-expanded', String(!expanded));
+    dropdownContent.style.display = expanded ? 'none' : 'block';
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!dropdownToggle.contains(e.target) && !dropdownContent.contains(e.target)) {
+      dropdownContent.style.display = 'none';
+      dropdownToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+// Optional Enhancement: Add subtle glow to watch title on hover
+const watches = document.querySelectorAll('.watch');
+watches.forEach(watch => {
+  watch.addEventListener('mouseenter', () => {
+    const title = watch.querySelector('h3');
+    if (title) {
+      title.style.textShadow = '0 0 10px rgba(255,255,255,0.2)';
+    }
+  });
+  watch.addEventListener('mouseleave', () => {
+    const title = watch.querySelector('h3');
+    if (title) {
+      title.style.textShadow = 'none';
+    }
+  });
+});
