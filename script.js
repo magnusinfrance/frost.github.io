@@ -145,8 +145,8 @@ function createStarfield() {
 const auroraContainer = document.querySelector('.aurora');
 const lightColors = [
   'rgba(50, 255, 180, 0.5)',  // Teal green
-  'rgba(180, 100, 255, 0.1)', // Soft violet
-    'rgba(100, 255, 200, 0.4)', // Bright green
+  'rgba(180, 100, 255, 0.3)', // Soft violet
+  'rgba(100, 255, 200, 0.5)', // Bright green
   'rgba(80, 200, 255, 0.2)',  // Blue
   'rgba(150, 255, 220, 0.3)'  // Light green
 ];
@@ -156,13 +156,13 @@ for (let i = 0; i < 5; i++) {
   light.classList.add('light-band');
   
   // Random properties
-  const y = Math.random() * 70 + 15;
+  const y = Math.random() * 50 + 15;
   const speed = Math.random() * 100 + 60 + 's';
-  const danceSpeed = Math.random() * 20 + 15 + 's';
+  const danceSpeed = Math.random() * 3 + 3 + 's';
   const fadeSpeed = Math.random() * 15 + 10 + 's';
-  const width = Math.random() * 100 + 150 + '%';
+  const width = Math.random() * 100 + 100 + '%';
   const color = lightColors[Math.floor(Math.random() * lightColors.length)];
-  const height = Math.random() * 80 + 60 + 'px';
+  const height = Math.random() * 100 + 60 + 'px';
   
   light.style.top = `${y}%`;
   light.style.setProperty('--drift-speed', speed);
