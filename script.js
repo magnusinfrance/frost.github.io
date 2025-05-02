@@ -144,11 +144,11 @@ function createStarfield() {
 // Create northern lights effect
 const auroraContainer = document.querySelector('.aurora');
 const lightColors = [
-  'rgba(50, 255, 180, 0.5)',  // Teal green
-  'rgba(180, 100, 255, 0.3)', // Soft violet
-  'rgba(100, 255, 200, 0.5)', // Bright green
-  'rgba(80, 200, 255, 0.2)',  // Blue
-  'rgba(150, 255, 220, 0.3)'  // Light green
+  'rgba(50, 255, 180, 0.6)',  // Teal green
+  'rgba(180, 100, 255, 0.4)', // Soft violet
+  'rgba(100, 255, 200, 0.6)', // Bright green
+  'rgba(80, 200, 255, 0.3)',  // Blue
+  'rgba(150, 255, 220, 0.4)'  // Light green
 ];
 
 for (let i = 0; i < 5; i++) {
