@@ -12,42 +12,8 @@ const music = document.getElementById('backgroundMusic');
 const musicToggle = document.getElementById('musicToggle');
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Create random starfield
-  const header = document.querySelector('header');
-  const starCount = 35;
-  
-  // Remove any existing stars
-  const existingStars = document.querySelectorAll('.star');
-  existingStars.forEach(star => star.remove());
-  
-  // Create new stars
-  for (let i = 0; i < starCount; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    
-    // Random properties
-    const size = Math.random() * 2 + 0.5; // 0.5px to 2.5px
-    const x = Math.random() * 100; // 0% to 100%
-    const y = Math.random() * 100; // 0% to 100%
-    const duration = Math.random() * 5 + 10; // 3s to 15s
-    const delay = Math.random() * 5; // 0s to 5s
-    const opacity = Math.random() * 0.7 + 0.3; // 0.3 to 1.0
-    
-    star.style.width = `${size}px`;
-    star.style.height = `${size}px`;
-    star.style.left = `${x}%`;
-    star.style.top = `${y}%`;
-    star.style.setProperty('--duration', `${duration}s`);
-    star.style.setProperty('--max-opacity', opacity);
-    star.style.animationDelay = `${delay}s`;
-    
-    // Occasionally make some stars brighter
-    if (Math.random() > 0.8) {
-      star.style.boxShadow = `0 0 ${size * 2}px white`;
-    }
-    
-    header.appendChild(star);
-  }
+  createStarfield(); // Call the standalone createStarfield function
+
   music.volume = 0.2;
   const playPromise = music.play();
   if (playPromise !== undefined) {
@@ -55,13 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Autoplay blocked until user interaction.');
     });
   }
-
-// Add this to your existing DOMContentLoaded event listener
-document.addEventListener('DOMContentLoaded', () => {
-  createStarfield();
-  // ... rest of your existing code
-});
-
 
   const fadeElements = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver(entries => {
@@ -75,6 +34,64 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   fadeElements.forEach(el => observer.observe(el));
+
+  // Image Magnifier Logic
+  const watchFigures = document.querySelectorAll('.watch figure');
+  const zoomFactor = 2.5; // Zoom level (2.5x)
+
+  watchFigures.forEach(figureElement => {
+    const imgElement = figureElement.querySelector('img');
+    if (!imgElement) return; // Skip if no image found
+
+    const zoomLens = document.createElement('div');
+    zoomLens.className = 'zoom-lens';
+    figureElement.appendChild(zoomLens);
+
+    figureElement.addEventListener('mouseenter', () => {
+      zoomLens.style.backgroundImage = 'url(' + imgElement.src + ')';
+      zoomLens.style.backgroundRepeat = 'no-repeat';
+      // Use naturalWidth and naturalHeight for original image dimensions
+      zoomLens.style.backgroundSize = (imgElement.naturalWidth * zoomFactor) + 'px ' + (imgElement.naturalHeight * zoomFactor) + 'px';
+      zoomLens.style.display = 'block';
+    });
+
+    figureElement.addEventListener('mouseleave', () => {
+      zoomLens.style.display = 'none';
+    });
+
+    figureElement.addEventListener('mousemove', (e) => {
+      if (zoomLens.style.display === 'none') return;
+
+      const rect = figureElement.getBoundingClientRect();
+      
+      // Calculate cursor position relative to the figure element
+      // Ensure x and y are not negative (e.g. when mouse is over padding/border)
+      let x = Math.max(0, e.clientX - rect.left);
+      let y = Math.max(0, e.clientY - rect.top);
+      
+      // Ensure x and y do not exceed figure dimensions
+      x = Math.min(x, figureElement.offsetWidth);
+      y = Math.min(y, figureElement.offsetHeight);
+
+
+      // Center lens over cursor
+      let lensX = x - zoomLens.offsetWidth / 2;
+      let lensY = y - zoomLens.offsetHeight / 2;
+
+      // Calculate background position for the zoom effect
+      // x and y are cursor positions relative to the figure (and thus the image, assuming no offsets)
+      const bgX = -(x * zoomFactor) + (zoomLens.offsetWidth / 2);
+      const bgY = -(y * zoomFactor) + (zoomLens.offsetHeight / 2);
+      zoomLens.style.backgroundPosition = bgX + 'px ' + bgY + 'px';
+
+      // Constrain lens position to be within the figure boundaries
+      lensX = Math.max(0, Math.min(lensX, figureElement.offsetWidth - zoomLens.offsetWidth));
+      lensY = Math.max(0, Math.min(lensY, figureElement.offsetHeight - zoomLens.offsetHeight));
+      
+      zoomLens.style.left = lensX + 'px';
+      zoomLens.style.top = lensY + 'px';
+    });
+  });
 });
 
 function toggleMusic() {
@@ -89,7 +106,7 @@ function toggleMusic() {
   }
 }
 
-// Create Stars effect
+// Create Stars effect (This is the version we are keeping)
 function createStarfield() {
   const header = document.querySelector('header');
   const starCount = 35;
