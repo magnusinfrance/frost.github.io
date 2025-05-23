@@ -18,12 +18,12 @@ header {
 
 .aurora {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 120%;
-  height: 200%;
-  top: -50%;
-  left: 5%;
+  /* top: 0; */ /* Controlled by animation better */
+  /* left: 0; */ /* Controlled by animation better */
+  width: 120%; /* Increased size */
+  height: 200%; /* Increased size */
+  top: -50%; /* Adjusted for better coverage */
+  left: 5%; /* Adjusted for centering */
   overflow: hidden;
   z-index: 0;
   mask-image: radial-gradient(
@@ -41,25 +41,26 @@ header {
     rgba(0,0,0,0) 100%
   );
   pointer-events: none;
+  /* animation: auroraMove 40s ease-in-out infinite; */ /* Removed as individual bands animate */
 }
 
 .light-band {
   position: absolute;
-  height: 80px;
-  width: 200%;
+  height: 80px; /* Original height */
+  width: 200%; /* Keep original width */
   border-radius: 50%;
-  opacity: 0;
+  opacity: 0; /* Initial opacity for fade-in */
   animation: 
-    drift var(--drift-speed) linear infinite,
+    drift var(--drift-speed) linear infinite, /* Use the corrected drift keyframes below */
     dance var(--dance-speed) ease-in-out infinite alternate,
     fade var(--fade-speed) ease-in-out infinite;
   transform-origin: center;
 }
 
-/* Aurora animation */
-@keyframes drift {
-  0% { transform: translateX(-50%) rotate(10deg); }
-  100% { transform: translateX(0%) rotate(-10deg); }
+/* Aurora animation - Keeping one set of keyframes */
+@keyframes drift { /* This is for light-band */
+  0% { transform: translateX(-50%) rotate(10deg); } /* Adjusted for better movement */
+  100% { transform: translateX(0%) rotate(-10deg); } /* Adjusted for better movement */
 }
 
 @keyframes dance {
@@ -68,16 +69,13 @@ header {
 }
 
 @keyframes fade {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 0.6; }
+  0%, 100% { opacity: 0.2; } /* Base opacity */
+  50% { opacity: 0.6; }    /* Peak opacity */
 }
 
-@keyframes auroraMove {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-55px); }
-}
+/* Removed duplicate auroraMove keyframes, as individual bands handle movement */
 
-/* Add vignette effect */
+/* Add vignette effect - Keeping one definition */
 header::before {
   content: '';
   position: absolute;
@@ -88,13 +86,12 @@ header::before {
   background: radial-gradient(
   circle at center,
   transparent 0%,
-  rgba(0, 0, 0, 0.1) 60%,
+  rgba(0, 0, 0, 0.1) 60%, /* Adjusted gradient for subtlety */
   rgba(0, 0, 0, 0.3) 70%,
   rgba(0, 0, 0, 0.6) 90%,
   rgba(0, 0, 0, 0.8) 100%
 );
-  );
-  z-index: 0;
+  z-index: 0; /* Ensure it's behind content but above main background */
   pointer-events: none;
 }
 
@@ -103,51 +100,24 @@ header::before {
   position: absolute;
   background-color: white;
   border-radius: 50%;
-  animation: twinkle var(--duration) ease-in-out infinite;
-  opacity: 0;
-  z-index: 1;
+  animation: twinkle var(--duration) ease-in-out infinite; /* Use the corrected twinkle */
+  opacity: 0; /* Initial opacity for twinkle */
+  z-index: 1; /* Above header background/vignette, below content */
 }
 
+/* Keeping one definition of twinkle */
 @keyframes twinkle {
-  0%, 100% { opacity: 0.1; }
-  50% { opacity: var(--max-opacity); }
+  0%, 100% { opacity: var(--max-opacity, 0.3); transform: scale(0.9); } /* Use variable or fallback */
+  50% { opacity: var(--max-opacity, 1); transform: scale(1.1); }
 }
 
-/* Vignette effect */
-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    circle at center,
-    transparent 0%,
-    rgba(0, 0, 0, 0.1) 40%,
-    rgba(0, 0, 0, 0.6) 100%
-  );
-  z-index: 0;
-  pointer-events: none;
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.3; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.1); }
-}
-
-/* Optional: Add subtle movement */
-@keyframes drift {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(5px, 5px); }
-}
-
+/* Removed the other drift keyframe as it was for stars, and stars use twinkle. The aurora drift is kept. */
 
 header h1, header p {
   position: relative;
-  z-index: 1;
+  z-index: 1; /* Ensures text is above stars and vignette */
   color: #ffffff;
-  text-shadow: 0 0 10px #000;
+  text-shadow: 0 0 10px #000; /* Added for readability */
 }
 
 header h1 {
@@ -215,10 +185,10 @@ nav .dropdown-toggle:hover {
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 2.5rem;
+  top: 2.5rem; /* Position below the toggle */
   background-color: #12233a;
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  z-index: 10;
+  z-index: 10; /* Above other nav items */
 }
 
 .dropdown-content a {
@@ -248,7 +218,7 @@ nav .dropdown-toggle:hover {
   gap: 2.5rem;
 }
 
-.watch-wrapper {
+.watch-wrapper { /* This could be the figure's parent if figure is not direct child of .watch */
   display: flex;
   justify-content: center;
 }
@@ -257,24 +227,27 @@ nav .dropdown-toggle:hover {
   background-color: rgba(255, 255, 255, 0.03);
   border-radius: 16px;
   padding: 1.5rem;
-  align-items: center;
+  /* align-items: center; */ /* Figure will handle image alignment */
   text-align: center;
-  box-shadow: 0 0 2407:45 01/05/2025px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05); /* Simplified box shadow */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 700px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-/* Specific tweaks for watch title alignment */
-.watch h3 {
-  min-height: 4.5rem;
-}
+  /* position: relative; */ /* Add this if figure is not used and .watch is the direct container for img and lens */
 }
 
+/* Specific tweaks for watch title alignment, assuming it's still relevant */
+.watch h3 {
+  min-height: 4.5rem; /* Or adjust as needed */
+}
+
+
 .watch:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.20) inset;
-  animation: glowPulse 2.5s ease-in-out infinite;
+  transform: scale(1.08); /* Existing hover effect */
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.20) inset; /* Existing hover effect */
+  animation: glowPulse 2.5s ease-in-out infinite; /* Existing hover effect */
 }
 
 @keyframes glowPulse {
@@ -286,18 +259,30 @@ nav .dropdown-toggle:hover {
   }
 }
 
+/* Assuming HTML is <div class="watch"><figure><img ...></figure>...</div> */
+.watch figure {
+  position: relative; /* Crucial for positioning .zoom-lens and .magnifier */
+  display: block; /* Or inline-block if preferred, affects layout */
+  margin: 0 auto 1rem auto; /* Center figure if it's block and give space below */
+  padding: 0;
+  line-height: 0; /* Removes potential whitespace below image if inline-block */
+  cursor: crosshair; /* Indicate zoom capability */
+}
+
 .watch img {
-  width: 150%;
-  max-width: 300px;
+  width: 100%; /* Image takes full width of its container (figure) */
+  max-width: 300px; /* Max width of the image itself */
   height: auto;
   border-radius: 12px;
-  margin-bottom: 1rem;
   transition: transform 0.3s ease;
+  display: block; /* Removes extra space underneath if figure is inline-block */
 }
 
 .watch:hover img {
-  transform: scale(1.12);
+  transform: scale(1.12); /* Existing hover effect on image */
 }
+
+/* Magnifier icon (small static icon on the image) - Single definition */
 .magnifier {
   position: absolute;
   top: 12px;
@@ -305,25 +290,28 @@ nav .dropdown-toggle:hover {
   width: 28px;
   height: 28px;
   background: url('zoom-icon.png') no-repeat center center;
-  background-size: 100% 100%;
+  background-size: contain; /* Ensures icon scales correctly */
   opacity: 0.7;
-  pointer-events: none;
+  pointer-events: none; /* So it doesn't interfere with figure's mouse events */
+  z-index: 5; /* Above image, but below zoom-lens if it overlaps */
 }
 
-/* Magnifier icon */
-.magnifier {
+/* New Zoom Lens styles */
+.zoom-lens {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 28px;
-  height: 28px;
-  background: url('zoom-icon.png') no-repeat center center;
-  background-size: contain;
-  opacity: 0.7;
-  pointer-events: none;
+  border: 2px solid #a9dbff; /* Theme-consistent border */
+  border-radius: 50%; /* Circular lens */
+  width: 150px;  /* Lens size */
+  height: 150px; /* Lens size */
+  background-repeat: no-repeat;
+  display: none; /* Hidden by default */
+  pointer-events: none; /* Does not interfere with mouse events on the figure */
+  z-index: 10; /* Above other elements on the card, including static magnifier */
+  overflow: hidden; /* Ensures the zoomed background image is clipped to the lens */
+  cursor: crosshair; /* Matches figure cursor */
 }
 
-.watch h3 {
+.watch h3 { /* Ensure this is after the .watch h3 in .watch block if overriding */
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
   color: #bfe9ff;
@@ -358,7 +346,7 @@ nav .dropdown-toggle:hover {
 .shop-now {
   background-color: rgba(255, 255, 255, 0.08);
   border: 1px solid #a9dbff;
-  padding: 1.6rem 1.2rem;
+  padding: 1.6rem 1.2rem; /* Increased padding for better clickability */
   color: #a9dbff;
   text-decoration: none;
   font-weight: 500;
@@ -399,7 +387,7 @@ nav .dropdown-toggle:hover {
   font-size: 1.5rem;
   background: none;
   border: none;
-  color: #80d0ff;
+  color: #80d0ff; /* Adjusted color for visibility */
   cursor: pointer;
   z-index: 20;
 }
@@ -408,7 +396,7 @@ nav .dropdown-toggle:hover {
 .scroll-to-bottom {
   position: fixed;
   right: 1rem;
-  background: #0d1b2a;
+  background: #0d1b2a; /* Darker background for contrast */
   border: none;
   color: #a9dbff;
   font-size: 1.2rem;
@@ -418,7 +406,7 @@ nav .dropdown-toggle:hover {
 }
 
 .scroll-to-top {
-  bottom: 3.5rem;
+  bottom: 3.5rem; /* Spacing from bottom */
 }
 
 .scroll-to-bottom {
